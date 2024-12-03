@@ -12,9 +12,6 @@ let counter = 0
 left.sort((a, b) => a - b)
 right.sort((a, b) => a - b)
 
-console.log(left)
-console.log(right)
-
 for(let i = 0; i < left.length; i++) {
     if(left[i] >= right[i]){
     counter += left[i] - right[i]
@@ -24,4 +21,25 @@ for(let i = 0; i < left.length; i++) {
 }
 
 console.log(counter)
+
+let secondCounter = 0;
+
+const secondLeft = newData.map(left => Number(left[0]))
+const secondRight = newData.map(right => Number(right[1]))
+
+secondLeft.forEach((num) => {
+  let countInside = 0
+  secondRight.forEach((secondNum) => {
+    if(num === secondNum){
+    countInside++
+    }
+  })
+  secondCounter += num * countInside
+})
+
+console.log(secondCounter)
+
+
+
+
 
