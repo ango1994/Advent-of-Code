@@ -1,0 +1,17 @@
+{
+  "name": "aoc25",
+  "version": "1.0.0",
+  "description": "Dani voy a por ti 😄",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
