@@ -1,13 +1,17 @@
-import { input } from "./input.js";
+import fs from "fs";
+
+let input = fs.readFileSync("./input.txt").toString();
 
 const WORD_FIND = "XMAS";
+input = input.split(/\r?\n/).map((arr) => arr.split(""));
+console.log(input);
 
 const makeRowWord = (line, index, secondIndex) => {
   let string = "";
   for (let i = 0; i < WORD_FIND.length; i++) {
     string += input[index][secondIndex + i];
   }
-  console.log(string);
+
   return string;
 };
 
@@ -16,6 +20,23 @@ const makeColumnWord = (input, line, index, secondIndex) => {
   for (let i = 0; i < WORD_FIND.length; i++) {
     string += input[index + i] && input[index + i][secondIndex];
   }
+  return string;
+};
+
+const makeDescendingDiagonalWord = (input, line, index, secondIndex) => {
+  let string = "";
+  for (let i = 0; i < WORD_FIND.length; i++) {
+    string += input[index + i] && input[index + i][secondIndex + i];
+  }
+  return string;
+};
+
+const makeAscendingDiagonalWord = (input, line, index, secondIndex) => {
+  let string = "";
+  for (let i = 0; i < WORD_FIND.length; i++) {
+    string += input[index - i] && input[index - i][secondIndex + i];
+  }
+  console.log(string);
   return string;
 };
 
@@ -34,6 +55,22 @@ const app = () => {
 
       const secondResult = makeColumnWord(input, line, index, secondIndex);
       checkWord(secondResult) && total++;
+
+      const thirdResult = makeDescendingDiagonalWord(
+        input,
+        line,
+        index,
+        secondIndex
+      );
+      checkWord(thirdResult) && total++;
+
+      const fourthResult = makeAscendingDiagonalWord(
+        input,
+        line,
+        index,
+        secondIndex
+      );
+      checkWord(fourthResult) && total++;
     });
   });
   console.log(total);
