@@ -1,6 +1,6 @@
-import fs from "fs";
+import {importInput} from '../helpers/import-input.js'
 
-let input = fs.readFileSync("./input.txt").toString();
+let input = importInput(import.meta.url)
 
 const WORD_FIND = "XMAS";
 input = input.split(/\r?\n/).map((arr) => arr.split(""));
